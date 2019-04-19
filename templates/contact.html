@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Contact - {{ block.super }}{% endblock %}
+
+{% block content %}
+<style>
+        body {
+           background: #90f7d4;
+           font-family: 'Open Sans',sans-serif;
+            }
+       .container {
+             width: 400px;
+             margin-top: 80px;
+             background: #41abe9b4;
+             padding: 20px 0;
+             -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+                     box-shadow: 0 0 2px rgba(0,0,0,0.2);
+         }
+        .button {
+               background-color: #34a7f3;
+               border: none;
+               color: white;
+               padding: 8px 8px;
+               text-align: center;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 13px;
+               margin: 3px 1px;
+               cursor: pointer;
+               }
+            </style>
+<center>
+        <div django-app="TaskManager">        
+            <div class="container">
+                <div class="content">
+<h1>Contact</h1>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+ </div>
+</div>
+</div>
+</center>
+{% endblock %}

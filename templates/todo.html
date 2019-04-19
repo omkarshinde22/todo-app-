@@ -1,0 +1,468 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html >
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Omkar/TodoList/static/css/todo.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta charset="UTF-8">
+
+</head>
+/* <style>
+    /* basic reset */
+  *, *:before, *:after {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+  }
+  /* app */
+  html {
+      font-size: 100%;
+  }
+  body {
+      background: #07e6c1;
+      font-family: 'Open Sans',sans-serif;
+  }
+  /* super basic grid structure */
+  .container {
+      width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px 0;
+      -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+              box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  }
+  .row {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+      clear: both;
+      overflow: hidden;
+  }
+  .half {
+      width: 50%;
+      float: left;
+  }
+  .content {
+      background: #fff;
+  }
+  /* logo */
+  h1 {
+      font-family: 'Rokkitt', sans-serif;
+      color: rgb(8, 5, 5);
+      text-align: center;
+      font-weight: 400;
+      margin: 0;
+  }
+  .tagline {
+      margin-top: -10px;
+      text-align: center;
+      padding: 5px 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgb(235, 224, 224);
+  }
+  /* inputs */
+  .inputContainer {
+      height: 60px;
+      border-top: 1px solid #161414;
+      position: relative;
+      overflow: hidden;
+  }
+  .inputContainer.last {
+      border-bottom: 1px solid #b8a9a9;
+      margin-bottom: 20px;
+  }
+  .inputContainer.half.last.right {
+      border-left: 1px solid #0a0707;
+  }
+  input[type="date"], input[type="text"], select {
+      height: 100%;
+      width: 100%;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      vertical-align: middle;
+      display: inline-block;
+      border: none;
+      border-radius: none;
+      font-size: 13px;
+      color: rgb(230, 222, 222);
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      -webkit-transition: background 0.3s;
+              transition: background 0.3s;
+  }
+  input[type="date"] {
+      cursor: pointer;
+  }
+  input[type="date"]:focus, input[type="text"]:focus, select:focus {
+      outline: none;
+      background: #1f3236;
+  }
+  ::-webkit-input-placeholder {
+      color: rgb(59, 28, 28);
+      font-weight: normal;
+      -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+  ::-moz-placeholder {
+      color: rgb(0, 0, 0);
+      font-weight: normal;
+      transition: all 0.3s;
+  }
+  ::-ms-input-placeholder {
+      color: rgb(0, 0, 0);
+      font-weight: normal;
+      transition: all 0.3s;
+  }
+  input:-moz-placeholder {
+      color: rgb(0, 0, 0);
+      font-weight: normal;
+      transition: all 0.3s;
+  }
+  input:focus::-webkit-input-placeholder {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+  }
+  input:focus::-moz-input-placeholder {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+  }
+  .inputContainer label {
+      padding: 5px 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #777;
+      display: block;
+      position: absolute;
+  }
+  button {
+      font-family: 'Open Sans', sans-serif;
+      background: transparent;
+      border-radius: 2px;
+      border: none;
+      outline: none;
+      height: 50px;
+      font-size: 14px;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      text-transform: uppercase;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      padding-left: 30px;
+      padding-right: 15px;
+  }
+  .icon {
+      position: absolute;
+      top: 30%;
+      left: 10px;
+      font-size: 20px;
+  }
+  .taskAdd {
+      background: rgb(35, 112, 184);
+      padding-left: 31px;
+  }
+  .taskAdd:hover {
+      background: #2bbbc0;
+  }
+  .taskDelete {
+      background: rgb(35, 112, 184);
+      padding-left: 30px;
+  }
+  .taskDelete:hover {
+      background: #2bbbc0;
+  }
+  .email {
+      background: rgb(35, 112, 184);
+      padding-left: 30px;
+  }
+  .email:hover {
+      background: #2bbbc0;
+  }
+  .contact {
+      background: rgb(35, 112, 184);
+      padding-left: 30px;
+  }
+  .contact:hover {
+      background: #2bbbc0;
+  }
+  /* task styles */
+  .taskList {
+      list-style: none;
+      padding: 0 20px;
+  }
+  .taskItem {
+      border-top: 1px solid #1b0909;
+      padding: 15px 0;
+      color: rgb(0, 0, 0);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+  }
+  .taskList .taskItem:nth-child(even) {
+      background: #fcfcfc;
+  }
+  .taskCheckbox {
+      margin-right: 1em;
+  }
+  .complete-true {
+      text-decoration:  line-through;
+      color: #bebebe;
+  }
+  .taskList .taskDate {
+      color: #0e1213;
+      font-size: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: block;
+      margin-left: 41px;
+  }
+  .fa-calendar {
+      margin-right: 10px;
+      font-size: 16px;
+  }
+  [class*='category-'] {
+      display: inline-block;
+      font-size: 10px;
+      background: #444;
+      vertical-align: middle;
+      color: rgb(37, 21, 21);
+      padding: 10px;
+      width: 75px;
+      text-align: center;
+      border-radius: 2px;
+      float: right;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-right: 20px;
+  }
+  .category- {
+      background: transparent;
+  }
+  .category-High {
+      background: #FF0000;
+  }
+  .category-Medium {
+      background: #df6400;
+  }
+  .category-Low {
+      background: #33f303;
+  }
+  .category-Incomplete {
+      background: #df6400;
+  }
+  .category-Completed {
+      background: #33f303;
+    text-decoration:line-through;
+  }
+  footer {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #777;
+  }
+  footer a {
+      color: #f39c12;
+  }
+  
+  .taskCheckbox {
+      -webkit-appearance: none;
+              appearance: none;
+      -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+      display: inline-block;
+      cursor: pointer;
+      width: 19px;
+      height: 19px;
+      vertical-align: middle;
+  }
+  .taskCheckbox:focus {
+      outline: none;
+  }
+  
+  .taskCheckbox:before, .taskCheckbox:checked:before {
+      font-family: 'FontAwesome';
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+      -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+  .taskCheckbox:before {
+      content: '\f096';
+      color: #0a1614;
+  }
+  .taskCheckbox:checked:before {
+      content: '\f14a';
+      color: #0a1614;
+  }
+  
+  .taskCategory {
+      -webkit-appearance: none;
+              appearance: none;
+      cursor: pointer;
+      padding-left: 16.5px;
+      background: #fff;
+  }
+  .selectArrow {
+      position: absolute;
+      z-index: 10;
+      top: 35%;
+      right: 0;
+      margin-right: 20px;
+      color: rgba(68, 153, 18, 0.842);
+      pointer-events: none;
+  }
+  .taskCategory option {
+      background: #fff;
+      border: none;
+      outline: none;
+      padding: 0 100px;
+  }
+  ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #d1d872;
+}
+ul li.checked {
+  background: rgb(136, 136, 136);
+  color: rgb(94, 88, 88);
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+
+    </style>
+<body>
+        
+<div django-app="TaskManager">        
+    <div class="container">
+            <div class="content">
+            <h1>TodoList App</h1>
+            
+<p id="Date"></p>
+
+<script>
+var d = new Date();
+document.getElementById("Date").innerHTML = d;
+</script>
+            
+            <form action="" method="post">
+            {% csrf_token %}
+                <div class="inputContainer">
+                    <input type="text" id="description" class="taskName" placeholder="What do you want to add?" name="description" required>
+                    <label for="description">Description</label>
+                </div>
+                <div class="inputContainer half last">
+                    <i class="fa fa-caret-down selectArrow"></i>
+                    <select id="category" class="taskCategory" name="category_select">
+                    <option class="disabled" value="">Choose Priority</option>
+                    {% for category in categories %}
+                        <option class="" value="{{ category.name }}" name="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                    </select>
+                    <label for="category">Priority</label>
+                </div>
+                <div class="inputContainer half last right">
+                    <input type="date" id="dueDate" class="taskDate" name="date">
+                    <label for="Date">Date</label>
+                </div>
+                <div class="row">
+                    <button class="taskAdd" name="taskAdd" type="submit"><i class="fa fa-plus icon"></i>Add task</button>
+                    <button class="taskDelete" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+
+                </div>
+            <ul class="taskList">
+            {% for todo in todos %}
+                <li class="taskItem">
+                    <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.id }}" value="{{ todo.id }}">
+                    <label for="{{ todo.id }}"><span class="complete-">{{ todo.title }}</span></label>
+                    <span class="category-{{ todo.category }}">{{ todo.category }}</span>
+                    <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.created }} - {{ todo.due_date }}</strong>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="row">
+            <form action="" method="get">
+            <button class="email" name="email" type="submit" value="Share" formaction="accounts/download/">Download</button>
+            <button class="contact" name="contact" type="submit" value="Share" formaction="accounts/contact/">Contact</button>
+           
+            </form>
+            </div>
+
+            </form>
+            </div>
+ </div>
+</div>
+<script>
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+</script>
+
+</body>
+</html>

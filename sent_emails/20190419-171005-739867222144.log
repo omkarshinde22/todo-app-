@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: rock.omkar22@gmail.com
+Date: Fri, 19 Apr 2019 11:40:05 -0000
+Message-ID: <155567400567.4820.8430338447373534838@omkar>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/OA/55m-7a22fd8154fd4dba28b1/
+
+Your username, in case you've forgotten: omkars
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
